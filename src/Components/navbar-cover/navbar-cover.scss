@@ -1,0 +1,29 @@
+.navbar-cover-image{
+        
+    z-index: -1;
+    background: transparent linear-gradient(67deg, #E71D3A 0%, #ECC7C1 45%, #EFCAC4 58%, #E4BDB8 70%, #42A8FE 100%) 0% 0% no-repeat padding-box;
+    // border: 3px solid blue;
+    // width: inherit;
+    height: 500px;
+    width: 100%;
+    // background-image: url('../../media/miscellaneous//corousel_3.png');
+    // margin-left: -220px;
+    position: relative;
+    img{
+        position: absolute;
+        bottom: 0;
+        height: 435px;
+        right: 180px;
+    }
+}
+
+
+@media screen and (min-width:320px) and (max-width:700px) {
+
+    .navbar-cover-image img{
+        height: 299px;
+        right: 10px;
+    }
+   
+    
+}
