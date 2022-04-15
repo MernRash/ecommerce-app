@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import "./cart.scss";
 import AppleMacBook from "../../media/Products/Apple Macbook Air.png";
 import { Button } from "@material-ui/core";
 
 function CartProduct() {
+  
+    const [increment,setIncrement] = useState(0);
+  
   return (
     <div className="cart-product-container">
       <div className="cart-nav-container">
@@ -37,9 +40,9 @@ function CartProduct() {
             <div className="cart-item-quantity">
 
               <div className="quantity-container">
-                <span className="cl-blue">-</span>
-                <span>2</span>
-                <span>+</span>
+                 <span className="cl-blue" onClick={()=>setIncrement((prev)=> prev <= 0 ? prev : prev - 1 )}>-</span>
+                <span>{increment}</span>
+                <span onClick={()=>setIncrement((prev)=> prev+1)}>+</span>
               </div>
             </div>
 
