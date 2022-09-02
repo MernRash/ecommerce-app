@@ -41,9 +41,28 @@ import { createSlice,configureStore } from "@reduxjs/toolkit";
 
 let initialState = {
   cart:[],
-
+  totalPrice:0,
+  totalQuantity:0,
 
 }
+
+const calculateTotalPrice = (state,action)=>{
+  state.totalPrice = state.cart.map(prod=>{
+    return prod.totalPrice;
+  }).reduce((prev,next)=>{
+    return prev + next;
+  },0);
+
+  state.totalQuantity = state.cart.map(prod=>{
+    return prod.quantity;
+  }).reduce((prev,next)=>{
+    return prev + next;
+  },0);
+
+}
+
+
+
 
 
 const cartSlice= createSlice({
@@ -55,12 +74,19 @@ const cartSlice= createSlice({
       /* It checks if any product in cart is available or not. */
       if(state.cart.length<1){
 
+
         let updateProd = {...action.payload}
         updateProd.quantity++;
+        updateProd.totalPrice = updateProd.price*updateProd.quantity;
         state.cart.push(updateProd);
 
-      }else{
+        calculateTotalPrice(state,action);
 
+
+        
+        
+
+      }else{
         /* if exists in cart return index number*/
         let existingProduct = state.cart.findIndex((data)=>{
           return data.id===action.payload.id;
@@ -71,13 +97,18 @@ const cartSlice= createSlice({
           /* if item not exist then it will increase the qunatity of item. */
           let updateProd = {...action.payload}
           updateProd.quantity++;
+          updateProd.totalPrice = updateProd.price*updateProd.quantity;
           state.cart.push(updateProd );
+          calculateTotalPrice(state,action);
         }else{
 
           /* if item is available it will not push just update the quantity. */
           let updateProd = {...action.payload}
           updateProd.quantity = state.cart[existingProduct].quantity + 1;
+          updateProd.totalPrice = updateProd.price*updateProd.quantity;
           state.cart[existingProduct] = updateProd;
+
+          calculateTotalPrice(state,action);
         }
 
 
@@ -86,11 +117,40 @@ const cartSlice= createSlice({
       
     },
 
-    removeProduct(id){
-      console.log("remove product")
+    removeProduct(state,action){
+      console.log("reached redux")
+      let existingProduct = state.cart.findIndex((data)=>{
+        return data.id===action.payload;
+      })
+
+
+      if(state.cart[existingProduct].quantity>0){
+        
+        state.cart[existingProduct].quantity--;
+        state.cart[existingProduct].totalPrice = state.cart[existingProduct].price*state.cart[existingProduct].quantity;
+        calculateTotalPrice(state,action);
+      }
+
+      if(state.cart[existingProduct].quantity === 0){
+        console.log(state.cart)
+        //state.cart = state.cart;
+        state.cart.splice(existingProduct,1);
+     }
+    },
+
+    deleteProduct(state,action){
+      let existingProduct = state.cart.findIndex((data)=>{
+        return data.id===action.payload;
+      })
+      state.cart.splice(existingProduct,1);
+
+      calculateTotalPrice(state,action);
+
     }
   }
 })
+
+
 
 
 const store = configureStore({

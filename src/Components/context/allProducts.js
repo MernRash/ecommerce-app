@@ -10,6 +10,7 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         imgUrl : AppleMacBook,
         price : 50000,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Mac"
     },
@@ -18,8 +19,9 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         title :"Apple Macbook Pro",
         ratings : 4.5,
         imgUrl : AppleMacBook,
-        price : 1000,
+        price : 100000,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Mac"
     },
@@ -30,6 +32,7 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         imgUrl : AppleMacBook,
         price : 100,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Ipad"
     },
@@ -40,6 +43,7 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         imgUrl : AppleMacBook,
         price : 100,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Ipad"
     },
@@ -48,8 +52,9 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         title :"Apple Macbook Pro",
         ratings : 2.5,
         imgUrl : AppleMacBook,
-        price : 100,
+        price : 100000,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Ipod"
     },
@@ -60,6 +65,7 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         imgUrl : AppleMacBook,
         price : 100,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Ipod"
     },
@@ -70,6 +76,7 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         imgUrl : AppleMacBook,
         price : 100,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Accessories"
     },
@@ -80,6 +87,7 @@ import AppleMacBook from '../../media/Products/Apple Macbook Air.png';
         imgUrl : AppleMacBook,
         price : 100,
         quantity : 0,
+        totalPrice:0,
         description : "",
         category:"Accessories"
     },

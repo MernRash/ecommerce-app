@@ -3,10 +3,13 @@ import "./header.scss";
 import profile_pic from "../../media/Web/profile_icon.svg";
 import addCart from "../../media/Web/bag_icon.svg";
 import { Link } from "react-router-dom";
-
+import {useSelector} from 'react-redux';
 
 function Header(props) {
 
+  let cartDetail = useSelector(state=>state.cart)
+  
+ 
 
   return (
     <div className="header-container">
@@ -38,7 +41,7 @@ function Header(props) {
             <img src={addCart} alt="bag_icon"></img>
           </span>
           &nbsp;
-          <span>2 Items</span>
+          <span>{cartDetail.totalQuantity} Items</span>
         </div>
         </Link>
       </div>
